@@ -1,5 +1,11 @@
-main: main.c hash_table.o
-	gcc -Wall -c -o main.c hash_table.o -g
+ht : main.o hash_table.o
+	gcc -Wall -o ht build/main.o build/hash_table.o -g
+
+main.o: src/main.c src/hash_table.h
+	gcc -Wall -c -o build/main.o src/main.c -g
+
+hash_table.o: src/hash_table.c src/hash_table.h
+	gcc -Wall -c -o build/hash_table.o src/hash_table.c -g
 
 # dict: main.o read.o ll.o dict.o utils.o data.o k-d_tree.o
 # 	gcc -Wall -o dict main.o read.o ll.o dict.o utils.o data.o k-d_tree.o -g
@@ -24,7 +30,3 @@ main: main.c hash_table.o
 	
 # k-d_tree.o: k-d_tree.c k-d_tree.h
 # 	gcc -Wall -c -o k-d_tree.o k-d_tree.c -g
-
-
-hash_table.o: hash_table.c hash_table.h
-	gcc -Wall -c -o hash_table.o hash_table.c -g
