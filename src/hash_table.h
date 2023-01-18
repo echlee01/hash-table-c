@@ -11,3 +11,7 @@ typedef struct {
     int count;
     ht_item** items;
 } ht_hash_table;
+
+ht_hash_table* ht_new();
+
+void free_ht(ht_hash_table* ht);
